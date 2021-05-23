@@ -2,3 +2,9 @@
 git add ...でファイルやフォルダをインデックスに登録
 git commit -m "コメント"でcommit
 pushでリモートリポジトリにプッシュ
+
+分からないこと
+mainがデフォルトブランチに変わってた？
+masterをmainにマージしたほうがいい？
+vscodeのgitでcommitできない　username emailをwslで登録したけど
+wslで登録したんじゃだめ？
