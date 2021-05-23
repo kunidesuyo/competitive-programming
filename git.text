@@ -1,0 +1,4 @@
+(初期設定　git init)
+git add ...でファイルやフォルダをインデックスに登録
+git commit -m "コメント"でcommit
+pushでリモートリポジトリにプッシュ
