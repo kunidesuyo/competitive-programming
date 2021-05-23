@@ -6,5 +6,6 @@ pushでリモートリポジトリにプッシュ
 分からないこと
 mainがデフォルトブランチに変わってた？
 masterをmainにマージしたほうがいい？
+古いサイト参考にしたからmasterで作ってしまったかも
 vscodeのgitでcommitできない　username emailをwslで登録したけど
 wslで登録したんじゃだめ？
