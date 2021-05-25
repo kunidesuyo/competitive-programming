@@ -6,35 +6,36 @@ const ll INF = __LONG_LONG_MAX__;
 
 using namespace std;
 
-ll nCr(ll n, ll k) {
-    ll r = 1;
-    for (ll d = 1; d <= k; ++d) {
-        r *= n--;
-        r /= d;
-    }
-    return r;
-}
+
+ll c[61][61];
 
 int main() {
     ll a, b, k;
     cin >> a >> b >> k;
 
-    if(k==1) {
-        cout << string(a, 'a') + string(b, 'b') << endl;
-        return 0;
+    string ans;
+
+    c[0][0] = 1;
+    for(int i = 0; i < 60; i++) {
+        for(int j = 0; j < i+1; j++) {
+            c[i+1][j] += c[i][j];
+            c[i+1][j+1] += c[i][j];
+        }
     }
 
-    for(int i = 1; i <= a; i++) {
-        int num = nCr(i+b, i) - nCr(i+b-1, i-1);
+    while(a+b > 0) {
+        ll x = 0;
+        if(a >= 1) x = c[a+b-1][a-1];
+        if(k <= x) {
+            ans += 'a';
+            a--;
+        } else {
+            ans += 'b';
+            b--;
+            k -= x;
+        }
     }
-
-    /*ll l = 0;
-    ll r = combinations2(a+b, a);
-
-    while(l < r) {
-        ll mid = (l+r) / 2;
-
-    }*/
+    cout << ans << endl;
 
 
     return 0;
