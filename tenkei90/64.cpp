@@ -24,16 +24,15 @@ template<class T> inline bool chmax(T& a, T b) {
 int main() {
     ll n, q;
     cin >> n >> q;
-    ll a[n];
-    for(ll i = 0; i < n; i++) cin >> a[i];
+    ll a[n+1];
+    for(ll i = 1; i <= n; i++) cin >> a[i];
     ll l[q], r[q], v[q];
     for(ll i = 0; i < q; i++){
         cin >> l[i] >> r[i] >> v[i];
-        l[i]--; r[i]--;
     }
-    ll e[n-1];
+    ll e[n];
     ll ans = 0;
-    for(ll i = 0; i < n-1; i++) {
+    for(ll i = 1; i <= n-1; i++) {
         e[i] = a[i+1] - a[i];
         ans += abs(e[i]);
     }
@@ -41,9 +40,11 @@ int main() {
 
     for(ll i = 0; i < q; i++) {
         ll before = abs(e[l[i]-1]) + abs(e[r[i]]);
-        if(l[i] > 0) e[l[i]-1] += v[i];
-        if(r[i] < n-1) e[r[i]] -= v[i];
+        //cout << abs(e[l[i]-1]) << " " << abs(e[r[i]]) << endl;
+        if(l[i] >= 2) e[l[i]-1] += v[i];
+        if(r[i] <= n-1) e[r[i]] -= v[i];
         ll after = abs(e[l[i]-1]) + abs(e[r[i]]);
+        //cout << before << " " << after << endl;
         ans += (after - before);
         cout << ans << endl;
     }
