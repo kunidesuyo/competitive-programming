@@ -1,2 +1,7 @@
 約数列挙のライブラリ
 前後に高速で追加削除はdeque
+繰り返し2乗法、逆元について学ぶ　156D
+→https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a
+combination　パスカルの三角形？
+素因数分解　abc142
+最小公倍数、最大公約数(STL)
