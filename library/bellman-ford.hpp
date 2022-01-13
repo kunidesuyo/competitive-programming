@@ -34,7 +34,6 @@ void shortest_path(int s) {
         }
         if (!update) break;
     }
-    cout << d[6] << endl;
 }
 
 bool find_negative_loop() {
