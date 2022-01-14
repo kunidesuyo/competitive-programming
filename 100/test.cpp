@@ -15,10 +15,12 @@ struct edge{
 int main() {
     int V, E, r;
     cin >> V >> E >> r;
+    r--;
     vector<edge> G[V];
     for(int i = 0; i < E; i++) {
         int s, t, d;
         cin >> s >> t >> d;
+        s--; t--;
         edge e;
         e.to = t; e.cost = d;
         G[s].push_back(e);
@@ -54,4 +56,3 @@ int main() {
 
     return 0;
 }
-
