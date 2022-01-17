@@ -34,6 +34,7 @@ public:
 
 struct edge {
     int from, to, cost;
+    int index;
 };
 
 bool comp(edge& e1, edge& e2) {
@@ -44,62 +45,53 @@ bool comp(edge& e1, edge& e2) {
 int main() {
     int n, m, q;
     cin >> n >> m >> q;
-    edge g[m+1];
+    edge g[m+q];
     for(int i = 0; i < m; i++) {
         int s, t, w;
         cin >> s >> t >> w;
         g[i].from = s;
         g[i].to = t;
         g[i].cost = w;
+        g[i].index = -1;
     }
-    int u[q], v[q], w[q];
     for(int i = 0; i < q; i++) {
-        cin >> u[i] >> v[i] >> w[i];
+        int u, v, w;
+        cin >> u >> v >> w;
+        g[m+i].from = u;
+        g[m+i].to = v;
+        g[m+i].cost = w;
+        g[m+i].index = i;
     }
 
-    
-    int index = m;
-    for(int i = 0; i < q; i++) {
-        
-        edge xx;
-        xx.from = u[i];
-        xx.to = v[i];
-        xx.cost = w[i];
-        g[index] = xx;
+    sort(g, g+m+q, comp);
 
-        sort(g, g+m+1, comp);
+    UnionFind uf;
+    uf.init(n);
 
-        /*cout << i  << " " << index << endl;
-        for(auto yy : g) {
-            cout << yy.from << " " << yy.to << " " << yy.cost << endl;
-        }*/
+    bool zz = false;
 
-        UnionFind uf;
-        uf.init(n);
+    vector<bool> ans(q, false);
 
-        bool zz = false;
-
-        for(int j = 0; j < m; j++) {
-            edge x = g[j];
-            if(!uf.same(x.from, x.to)) {
-                //ans += x.cost;
+    for(int i = 0; i < m+q; i++) {
+        edge x = g[i];
+        if(!uf.same(x.from, x.to)) {
+            if(x.index == -1) {
                 uf.unite(x.from, x.to);
-                if(x.from == u[i] && x.to == v[i] && x.cost == w[i]) {
-                    zz = true;
-                }
-            }
-            if(x.from == u[i] && x.to == v[i] && x.cost == w[i]) {
-                index = j;
+            } else {
+                ans[x.index] = true;
             }
         }
-        
+    }
+    
 
-        if(zz) {
+    for(auto x : ans) {
+        if(x) {
             cout << "Yes" << endl;
         } else {
             cout << "No" << endl;
         }
     }
+    
 
     
 
