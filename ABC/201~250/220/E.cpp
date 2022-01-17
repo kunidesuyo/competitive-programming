@@ -35,37 +35,25 @@ int main() {
     ll ans = 0;
     for(ll up = 0; up <= d; up++) {
         ll down = d - up;
-        if(down > n-1 || up > n-1) continue;
+        if(down >= n || up >= n) continue;
         ll start = modpow(2, n) - 1 - (modpow(2, up) - 1);
-        while(start < 0) {
-            start += mod;
-        }
         if(down > up) {
             ll num = modpow(2, n) - 1;
-            while(num < 0){
-                num += mod;
-            }
             num -= modpow(2, n-(down - up)) - 1;
-            while(num < 0) {
-                num += mod;
-            }
             start -= num;
-            while(start < 0) {
-                start += mod;
-            }
         }
         /*cout << up << " ";
         cout << down << " ";
         cout << start << " ";
         cout << modpow(2, down) << " ";
         cout << "\n";*/
+        start %= mod;
         ans += start * modpow(2, down);
-        ans %= mod;
         if(up == down) ans -= start;
-        while(ans < 0) {
-            ans += mod;
-        }
+        ans %= mod;
     }
+
+    while(ans < 0) ans += mod;
     cout << ans << endl;
     
 
