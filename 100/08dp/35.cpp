@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+#include <cmath>
+
+#define all(x) (x).begin(),(x).end()
+
+
+
+using namespace std;
+
+template<class T> inline bool chmin(T& a, T b) {
+    if (a > b) {
+        a = b;
+        return true;
+    }
+    return false;
+    }
+template<class T> inline bool chmax(T& a, T b) {
+    if (a < b) {
+        a = b;
+        return true;
+    }
+    return false;
+}
+
+int main() {
+    int n, W;
+    cin >> n >> W;
+    int v[n+1], w[n+1]; 
+    for(int i = 1; i <= n; i++) cin >> v[i] >> w[i];
+
+    int dp[n+1][W+1];
+    for(int i = 0; i < n+1; i++) {
+        for(int j = 0; j < W+1; j++) {
+            dp[i][j] = 0;
+        }
+    }
+
+    for(int i = 1; i <= n; i++) {
+        for(int j = 0; j <= W; j++) {
+            if(j - w[i] >= 0) chmax(dp[i][j], dp[i-1][j-w[i]] + v[i]);
+            chmax(dp[i][j], dp[i-1][j]);
+        }
+    }
+
+    cout << dp[n][W] << endl;
+
+    return 0;
+}
