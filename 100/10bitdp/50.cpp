@@ -58,7 +58,8 @@ int main() {
         }
     }
     for(int i = 0; i < m; i++) {
-        int s,t,d,x;
+        int s,t;
+        ll d,x;
         cin >> s >> t >> d >> x;
         s--; t--;
         g[s][t].first = d;

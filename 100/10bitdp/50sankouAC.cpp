@@ -42,13 +42,13 @@ P solve(int bit, int u) {
 int main(){
     int m, a, b;
     cin >> n >> m;
-    for(int i = 1; i <= 16; i++) {
-        for(int j = 1; j <= 16; j++) {
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
             g[i][j].first = inf;
         }
     }
-    for(int i = 0; i < (1 << 16); i++) {
-        for(int j = 1; j <= 16; j++) {
+    for(int i = 0; i < (1 << n); i++) {
+        for(int j = 1; j <= n; j++) {
             dp[i][j].first = -1;
             dp[i][j].second = 0;
         }
