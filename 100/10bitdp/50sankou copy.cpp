@@ -10,15 +10,15 @@ int n;
 
 P solve(int bit, int u) {
     if(dp[bit][u].first != -1) return dp[bit][u];
-    if(bit == (1 << u)) {
-        dp[bit][u].first = g[0][u].first;
+    if(bit == (1 << (u - 1))) {
+        dp[bit][u].first = g[1][u].first;
         dp[bit][u].second = 1;
         return dp[bit][u];
     }
-    int pre_bit = bit ^ (1 << u);
+    int pre_bit = bit ^ (1 << (u - 1));
     P res = make_pair(inf, 0);
-    for(int i = 0; i < n; i++) {
-        if(!(pre_bit & (1 << i))) continue;
+    for(int i = 1; i <= n; i++) {
+        if(!(pre_bit & (1 << (i - 1)))) continue;
         ll num = solve(pre_bit, i).first + g[i][u].first;
         if(num <= g[i][u].second) {
             if(res.first > num) {
@@ -42,31 +42,26 @@ P solve(int bit, int u) {
 int main(){
     int m, a, b;
     cin >> n >> m;
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) {
+    for(int i = 1; i <= 16; i++) {
+        for(int j = 1; j <= 16; j++) {
             g[i][j].first = inf;
         }
     }
-    for(int i = 0; i < (1 << n); i++) {
-        for(int j = 0; j < n; j++) {
+    for(int i = 0; i < (1 << 16); i++) {
+        for(int j = 1; j <= 16; j++) {
             dp[i][j].first = -1;
             dp[i][j].second = 0;
         }
     }
     for(int i = 0; i < m; i++) {
-        int s, t, d, x;
-        cin >> s >> t >> d >> x;
-        s--; t--;
-        g[s][t].first = d;
-        g[t][s].first = d;
-        g[s][t].second = x;
-        g[t][s].second = x;
+        cin >> a >> b >> g[a][b].first >> g[a][b].second;
+        g[b][a].first = g[a][b].first;
+        g[b][a].second = g[a][b].second;
     }
     P ans;
-    ans = solve((1 << n) - 1, 0);
+    ans = solve((1 << n) - 1, 1);
     if(ans.first != inf) cout << ans.first << " " << ans.second << endl;
     else cout << "IMPOSSIBLE" << endl;
-
 
 return 0;
 }
