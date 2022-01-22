@@ -63,20 +63,5 @@ int main(){
     if(ans.first != inf) cout << ans.first << " " << ans.second << endl;
     else cout << "IMPOSSIBLE" << endl;
 
-    /*for(int i = 0; i < (1<<n); i++) {
-        int num = i;
-        vector<int> bit;
-        for(int k = 0; k < n; k++) {
-            bit.push_back(num % 2);
-            num /= 2;
-        }
-        reverse(all(bit));
-        for(auto x : bit) cout << x;
-        cout << " ";
-        for(int j = 0; j < n; j++) {
-            cout << dp[i][j+1].second << " ";
-        }
-        cout << "\n";
-    }*/
 return 0;
 }
