@@ -1,0 +1,74 @@
+j=1id=2
+j=3id=1
+j=1id=2
+j=2id=5
+j=1id=2
+j=1id=2
+j=2id=5
+j=1id=2
+j=1id=2
+j=1id=2
+j=2id=5
+j=1id=2
+j=2id=5
+j=1id=2
+j=1id=2
+i = 0
+1
+2
+4
+i = 1
+1
+2
+5
+7
+i = 2
+2
+8
+i = 3
+0
+2
+5
+i = 4
+2
+5
+i = 5
+1
+2
+i = 6
+0
+2
+5
+6
+i = 7
+2
+3
+5
+8
+i = 8
+2
+i = 9
+2
+9
+i=0
+1 INF INF INF INF INF INF INF INF INF 
+i=1
+1 2 INF INF INF INF INF INF INF INF 
+i=2
+1 2 8 INF INF INF INF INF INF INF 
+i=3
+0 2 8 INF INF INF INF INF INF INF 
+i=4
+0 2 5 INF INF INF INF INF INF INF 
+i=5
+0 1 5 INF INF INF INF INF INF INF 
+i=6
+0 1 2 INF INF INF INF INF INF INF 
+i=7
+0 1 2 3 INF INF INF INF INF INF 
+i=8
+0 1 2 3 INF INF INF INF INF INF 
+i=9
+0 1 2 3 9 INF INF INF INF INF 
+0 1 2 3 9 1073741823 1073741823 1073741823 1073741823 1073741823 
+5
