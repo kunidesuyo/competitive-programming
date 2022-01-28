@@ -9,62 +9,49 @@ const int inf = INT_MAX / 2;
 
 using namespace std;
 
-int n;
-int a[2*8][2*8];
-
+int n, n2;
+vector<vector<int>> a;
 int ans;
-
-void solve(int s, vector<int> z, int bit) {
-    bool c = true;
-    for(int i = 0; i < n; i++) {
-        if(z[i] == 0) {
-            c = false;
+void dfs(vector<bool> s, int x) {
+    int si = -1;
+    for(int i = 0; i < n2; i++) {
+        if(!s[i]) {
+            si = i;
             break;
         }
     }
-    if(c) {
-        ans = max(ans, bit);
+    if(si == -1) {
+        ans = max(ans, x);
         return;
     }
-    
-
+    s[si] = true;
+    for(int i = 0 ; i < n2; i++) {
+        if(!s[i] && si != i) {
+            s[i] = true;
+            dfs(s, x^a[si][i]);
+            s[i] = false;
+        }
+    }
 }
+
+
 
 int main() {
     cin >> n;
-    for(int i = 0; i < 2*n; i++) {
-        for(int j = 0; j < 2*n; j++) {
-            a[i][j] = -1;
+    n2 = n*2;
+    a = vector<vector<int>>(n2, vector<int>(n2));
+    for(int i = 0; i < n2; i++) {
+        for(int j = i+1; j < n2; j++) {
+            cin >> a[i][j];
+            a[j][i] = a[i][j];
         }
-    }
-    for(int i = 0; i < 2*n-1; i++) {
-        for(int j = 0; j < 2*n-1-i; j++) {
-            cin >> a[i][j+i+1];
-            a[j+i+1][i] = a[i][j+i+1];
-        }
-    }
-
-    for(int i = 0; i < 2*n-1; i++) {
-        for(int j = 0; j < 2*n-1-i; j++) {
-            cout << a[i][j+i+1] << " ";
-        }
-        cout << "\n";
-    }
-
-    for(int i = 0; i < 2*n; i++) {
-        for(int j = 0; j < 2*n; j++) {
-            cout << a[i][j] << " ";
-        }
-        cout << "\n";
     }
 
     ans = 0;
+    vector<bool> s(n2);
+    dfs(s, 0);
 
-    vector<int> z(n, 0);
-    solve(0, z);
-
-
-
+    cout << ans << endl;
 
     return 0;
 }
