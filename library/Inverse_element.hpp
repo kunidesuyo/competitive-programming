@@ -23,16 +23,22 @@ ll modinv(ll a) {
 }
 
 ll nCr_mod(ll n, ll r) {
+    if(n < k) return 0;
+    if(n < 0 || r < 0) return 0;
+    // nCr = n! / r!(n-r)!
+    // n!/(n-r)! 
     ll val = 1;
     for(ll i = 0; i < r; i++) {
         val *= n - i;
         val %= mod;
     }
+    // r!
     ll bunsi = 1;
     for(ll i = 1; i <= r; i++) {
         bunsi *= i;
         bunsi %= mod;
     }
+    //  /r! % mod
     val *= modinv(bunsi);
     val %= mod;
     return val;
