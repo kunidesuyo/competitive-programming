@@ -27,3 +27,9 @@ for(auto itr = Set.begin(); itr != Set.end(); itr++) {
     cout << (*itr) << endl;
 }
 ```
+
+### vector
+- 初期化
+```
+vector<int> a(4, 5) //要素数4、値5で初期化
+```
