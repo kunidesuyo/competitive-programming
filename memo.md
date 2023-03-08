@@ -5,6 +5,12 @@
 大域変数で宣言したら問題なく動いた。
 
 ## 標準ライブラリ(STL)
+### 型変換
+- int -> string  
+```
+int n;
+string s = to_string(n);
+```
 ### cout
 ```
 cout << setprecision(x) << y;
@@ -38,4 +44,15 @@ for(auto itr = Set.begin(); itr != Set.end(); itr++) {
 - 初期化
 ```
 vector<int> a(4, 5) //要素数4、値5で初期化
+```
+
+### deque
+```
+    deque<int> d;
+    d.push_front(); //先頭に挿入
+    d.front();      //先頭の要素を参照
+    d.pop_front();  //先頭の要素を削除
+    d.push_back();  //末尾に挿入
+    d.back();       //末尾の要素を参照
+    d.pop_back();   //末尾の要素を削除
 ```
