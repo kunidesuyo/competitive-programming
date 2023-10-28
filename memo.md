@@ -45,6 +45,11 @@ for(auto itr = Set.begin(); itr != Set.end(); itr++) {
 ```
 vector<int> a(4, 5) //要素数4、値5で初期化
 ```
+- コピー
+```
+vector<int> origin, copied;
+copy(origin.begin(), origin.end(), back_inserter(copied) );
+```
 
 ### deque
 ```
