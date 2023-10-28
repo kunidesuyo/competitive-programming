@@ -40,6 +40,27 @@ for(auto itr = Set.begin(); itr != Set.end(); itr++) {
 }
 ```
 
+### multiset
+集合（重複あり）
+- 宣言
+`multiset<(型)> (変数名);`
+- 追加
+`mst.insert(x);`
+- 削除
+`mst.erase(x);`
+  - xがイテレータの場合、一つだけ削除
+  - それ以外の場合は、入力した値と等しい要素をすべて削除
+- 最小値のイテレータ
+`mst.begin();`
+- 最大値のイテレータ
+`mst.rbegin();`
+- イテレータの値を参照
+`*mst.begin();`
+- 値の検索
+`mst.find(x);`
+  - 値が存在する場合はそのイテレータを返す
+  - 値が存在しない場合は`mst.end()`を返す
+
 ### vector
 - 初期化
 ```
@@ -74,4 +95,3 @@ for (int bit = 0; bit < (1<<n); bit++) {
     }
 }
 ```
-test
