@@ -71,6 +71,10 @@ vector<int> a(4, 5) //要素数4、値5で初期化
 vector<int> origin, copied;
 copy(origin.begin(), origin.end(), back_inserter(copied) );
 ```
+- 二次元配列
+```
+vector<vector<int>> a(n);
+```
 
 ### deque
 ```
