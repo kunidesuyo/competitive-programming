@@ -80,6 +80,15 @@ copy(origin.begin(), origin.end(), back_inserter(copied) );
 ```
 vector<vector<int>> a(n);
 ```
+- sort
+  - 昇順
+  ```
+  sort(v.begin(), v.end());
+  ```
+  - 降順
+  ```
+  sort(v.rbegin(), v.rend());
+  ```
 
 ### deque
 ```
@@ -91,6 +100,13 @@ vector<vector<int>> a(n);
     d.back();       //末尾の要素を参照
     d.pop_back();   //末尾の要素を削除
 ```
+
+## 数学
+### 直角三角形の斜辺
+```
+r = hypot(x, y); // r = sqrt(x*x + y*y);
+```
+
 
 ## アルゴリズム
 ### bit全探索
