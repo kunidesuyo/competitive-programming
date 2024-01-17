@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+#include <cmath>
+
+#define all(x) (x).begin(),(x).end()
+
+using ll = long long;
+const ll INF = 1LL<<60;
+const int inf = INT_MAX / 2;
+
+using namespace std;
+
+int main() {
+  int l1, r1, l2, r2;
+  cin >> l1 >> r1 >> l2 >> r2;
+  int ans = 0;
+  for(int i = 0; i <= 100; i++) {
+    if(l1 <= i && i <= r1 && l2 <= i && i <= r2) ans++;
+  }
+  cout << max(0, ans-1) << endl;
+  return 0;
+}
