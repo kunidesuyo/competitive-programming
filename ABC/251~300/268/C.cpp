@@ -14,6 +14,16 @@ int main() {
   cin >> n;
   int p[n];
   for(int i = 0; i < n; i++) cin >> p[i];
-  
+  vector<int> ans(n, 0);
+  for(int i = 0; i < n; i++) {
+    ans[(i-p[i]-1+n)%n]++;
+    ans[(i-p[i]+n)%n]++;
+    ans[(i-p[i]+1+n)%n]++;
+  }
+  int maxi = -1;
+  for(int i = 0; i < n; i++) {
+    maxi = max(maxi, ans[i]);
+  }
+  cout << maxi << endl;
   return 0;
 }
