@@ -50,6 +50,10 @@ for(auto itr = Set.begin(); itr != Set.end(); itr++) {
     cout << (*itr) << endl;
 }
 ```
+- 最小の要素を取得
+```
+int mini = *begin(Set);
+```
 
 ### multiset
 集合（重複あり）
