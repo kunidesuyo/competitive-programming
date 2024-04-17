@@ -13,37 +13,20 @@ int main() {
   ll k;
   cin >> k;
   ll n = s.length();
+  ll a[n];
+  for(ll i = 0; i < n; i++) a[i] = s[i] == '.';
 
-  ll ans = -1;
-
-  ll num = 0;
-  ll r;
-  for(ll i = 0; i < n; i++) {
-    if(s[i] == '.') num++;
-    if(num > k) {
-      num--;
-      r = i-1;
-      break;
-    }
-  }
-  ll l = 0;
-  while(r < n) {
-    if(s[l] == '.') {
-      num--;
-    }
-    l++;
-    while(true) {
+  ll ans = 0;
+  ll r = 0, sum = 0;
+  for(ll l = 0; l < n; l++) {
+    while(r < n && sum+a[r] <= k) {
+      sum += a[r];
       r++;
-      if(s[r] == '.') {
-        num++;
-      }
-      if(num > k) {
-        r--;
-        break;
-      }
     }
-    ans = max(ans, r-l+1);
+    ans = max(ans, r-l);
+    sum -= a[l];
   }
   cout << ans << endl;
+
   return 0;
 }
