@@ -13,65 +13,31 @@ int main() {
   int n;
   cin >> n;
   vector<int> a(n);
-  for(int i = 0; i < n; i++) cin >> a[i];
-  sort(a.begin(), a.end());
-
-  list<int> ls;
-  int t = 0;
+  set<int> aa;
   for(int i = 0; i < n; i++) {
-    if(i == 0) {
-      ls.push_back(a[i]);
-      continue;
-    }
-    if(a[i] == a[i-1]) {
-      t++;
-    } else {
-      ls.push_back(a[i]);
-    }
+    cin >> a[i];
+    aa.insert(a[i]);
   }
 
-  if(n == 1) {
-    if(a[0] == 1) {
-      cout << 1 << endl;
+  int c[n+1];
+  c[0] = 0;
+  for(int i = 1; i <= n; i++) {
+    if(aa.find(i) != aa.end()) {
+      c[i] = c[i-1] + 1;
     } else {
-      cout << 0 << endl;
+      c[i] = c[i-1] + 2;
     }
-    return 0;
   }
 
   int ans = 0;
   for(int i = 1; i <= n; i++) {
-    if(ls.size() == 0 && t == 0) {
-      ans = i-1;
+    if(c[i] <= n) {
+      ans = i;
+    } else {
       break;
     }
-    bool end = false;
-    if(ls.front() == i) {
-      ls.pop_front();
-    } else {
-      if(t >= 2) {
-        t -= 2;
-      } else if(t == 1) {
-        t = 0;
-        if(ls.size() >= 1) {
-          ls.pop_back();
-        } else {
-          ans = i-1;
-          end = true;
-        }
-      } else {
-        if(ls.size() >= 2) {
-          ls.pop_back();
-          ls.pop_back();
-        } else {
-          ans = i-1;
-          break;
-        }
-      }
-    }
-    if(end) break;
   }
-  cout << ans << endl;
 
+  cout << ans << endl;
   return 0;
 }
