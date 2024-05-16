@@ -12,52 +12,66 @@ using namespace std;
 int main() {
   int n;
   cin >> n;
-  int a[n];
-  map<int, int> s;
+  vector<int> a(n);
+  for(int i = 0; i < n; i++) cin >> a[i];
+  sort(a.begin(), a.end());
+
+  list<int> ls;
+  int t = 0;
   for(int i = 0; i < n; i++) {
-    cin >> a[i];
-    a[i]--;
-    s[a[i]]++;
-  }
-  sort(a, a+n, greater<int>());
-  int now = 0;
-  set<int> ans;
-  for(int i = 0; i < n; i++) {
-    bool end = false;
-    if(s[i] >= 1) {
-      s[i]--;
-      ans.insert(i);
+    if(i == 0) {
+      ls.push_back(a[i]);
+      continue;
+    }
+    if(a[i] == a[i-1]) {
+      t++;
     } else {
-      if(now+1 < n) {
-        for(int j = 0; j < 2; j++) {
-          bool ok = false;
-          while(now < n) {
-            int x = a[now];
-            if(s[x] >= 1) {
-              s[x]--;
-              now++;
-              ok = true;
-            } else {
-              now++;
-            }
-            if(ok) break;
-          }
-          if(ok) {
-            continue;
-          } else {
-            end = true;
-            break;
-          }
+      ls.push_back(a[i]);
+    }
+  }
+
+  if(n == 1) {
+    if(a[0] == 1) {
+      cout << 1 << endl;
+    } else {
+      cout << 0 << endl;
+    }
+    return 0;
+  }
+
+  int ans = 0;
+  for(int i = 1; i <= n; i++) {
+    if(ls.size() == 0 && t == 0) {
+      ans = i-1;
+      break;
+    }
+    bool end = false;
+    if(ls.front() == i) {
+      ls.pop_front();
+    } else {
+      if(t >= 2) {
+        t -= 2;
+      } else if(t == 1) {
+        t = 0;
+        if(ls.size() >= 1) {
+          ls.pop_back();
+        } else {
+          ans = i-1;
+          end = true;
         }
-        if(end) break;
-        ans.insert(i);
       } else {
-        end = true;
-        break;
+        if(ls.size() >= 2) {
+          ls.pop_back();
+          ls.pop_back();
+        } else {
+          ans = i-1;
+          break;
+        }
       }
     }
     if(end) break;
   }
-  cout << ans.size() << endl;
+  cout << ans << endl;
+
   return 0;
 }
