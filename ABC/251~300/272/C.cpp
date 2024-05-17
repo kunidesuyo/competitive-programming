@@ -4,43 +4,30 @@
 #define all(x) (x).begin(),(x).end()
 
 using ll = long long;
+const ll INF = 1LL<<60;
+const int inf = INT_MAX / 2;
 
 using namespace std;
 
 int main() {
-  ll n;
+  int n;
   cin >> n;
-  vector<ll> a(n);
-  for(ll i = 0; i < n; i++) {
-    cin >> a[i];
-  }
-
-  if(n == 2) {
-    if(a[0] % 2 == a[1] % 2) {
-      cout << a[0] + a[1] << endl;
+  vector<int> odd, even;
+  for(int i = 0; i < n; i++) {
+    int a;
+    cin >> a;
+    if(a % 2 == 0) {
+      even.push_back(a);
     } else {
-      cout << -1 << endl;
-    }
-    return 0;
-  }
-
-  sort(a.rbegin(), a.rend());
-
-  vector<ll> odd;
-  vector<ll> even;
-  for(ll i = 0; i < 3; i++) {
-    if(a[i] % 2 == 0) {
-      even.push_back(a[i]);
-    } else {
-      odd.push_back(a[i]);
+      odd.push_back(a);
     }
   }
-
-  if(even.size() > odd.size()) {
-    cout << even[0] + even[1] << endl;
-  } else {
-    cout << odd[0] + odd[1] << endl;
-  }
+  sort(odd.rbegin(), odd.rend());
+  sort(even.rbegin(), even.rend());
+  int ans = -1;
+  if(odd.size() >= 2) ans = max(ans, odd[0] + odd[1]);
+  if(even.size() >= 2) ans = max(ans, even[0] + even[1]);
+  cout << ans << endl;
 
   return 0;
 }
