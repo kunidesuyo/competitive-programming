@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 #include <cmath>
 
 #define all(x) (x).begin(), (x).end()
@@ -9,16 +10,12 @@ const int inf = INT_MAX / 2;
 
 using namespace std;
 
-int main()
-{
+int main() {
   ll a, b;
   cin >> a >> b;
-  if (a % b == 0)
-  {
+  if (a % b == 0) {
     cout << a / b << endl;
-  }
-  else
-  {
+  } else {
     cout << a / b + 1 << endl;
   }
 
