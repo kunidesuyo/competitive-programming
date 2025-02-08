@@ -22,16 +22,6 @@
       },
     },
     {
-      "label": "other_dl",
-      "type": "shell",
-      "command": "${workspaceFolder}/cmd/other_dl.sh ${input:other_dl}",
-      "presentation": {
-        "reveal": "always",
-        "focus": true,
-        "panel": "shared",
-      },
-    },
-    {
       "label": "test",
       "type": "shell",
       "command": "oj t -d ${fileDirname}/tests/ -c ${fileDirname}/${fileBasenameNoExtension}.out -N",
