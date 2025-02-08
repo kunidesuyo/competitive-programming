@@ -1,5 +1,4 @@
 # syntax=docker/dockerfile:1
-# 参考URL: https://qiita.com/tf63/items/c93c6f24d73599e637d8
 FROM node:19
 
 # インタラクティブモードにならないようにする
