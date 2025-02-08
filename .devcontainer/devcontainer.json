@@ -8,6 +8,7 @@
       "extensions": [
         "sanaajani.taskrunnercode",
         "ms-vscode.cpptools-extension-pack",
+        "ms-azuretools.vscode-docker",
       ]
     }
   }
