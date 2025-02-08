@@ -103,6 +103,16 @@
       "type": "shell",
       "command": "oj t -d ./tests/",
     },
+    {
+      "label": "login",
+      "type": "shell",
+      "command": "acc login && oj login https://beta.atcoder.jp",
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+      },
+    },
   ],
   "inputs": [
     {

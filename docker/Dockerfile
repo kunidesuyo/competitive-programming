@@ -40,8 +40,6 @@ ENV CPLUS_INCLUDE_PATH /lib/ac-library
 # atcoder-cliのインストール
 RUN npm install -g atcoder-cli@2.2.0
 RUN acc config default-task-choice all
-# TODO: accログイン
 
 # ojのインストール
 RUN pip install online-judge-tools==11.5.1
-# TODO: ojログイン
