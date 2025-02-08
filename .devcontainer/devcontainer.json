@@ -2,5 +2,13 @@
   "name": "AtCoder",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "atcoder",
-  "workspaceFolder": "/app"
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "sanaajani.taskrunnercode",
+        "ms-vscode.cpptools-extension-pack",
+      ]
+    }
+  }
 }
