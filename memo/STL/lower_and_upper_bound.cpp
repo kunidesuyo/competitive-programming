@@ -54,5 +54,15 @@ int main() {
     cout << v << endl;
   }
 
+  // lower_bound, upper_boundの由来
+  // 指定した値を包含する左閉右開区間[)の
+  // 下限の境界位置がlower_bound
+  // 上限の境界位置がupper_bound
+
+  // [1, 3, 5, 7, 9]
+  // 6      [  )
+  //        L  U
+  // 
+
   return 0;
 }
