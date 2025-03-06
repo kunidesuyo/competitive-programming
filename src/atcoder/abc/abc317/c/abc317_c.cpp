@@ -13,6 +13,7 @@ const int inf = INT_MAX / 2;
 int main() {
   int n, m;
   cin >> n >> m;
+  vector<vector<int>> g(n, vector<int>(n, -1));
   vector<int> a(m);
   vector<int> b(m);
   vector<int> c(m);
@@ -20,47 +21,22 @@ int main() {
     cin >> a[i] >> b[i] >> c[i];
     a[i]--;
     b[i]--;
+    g[a[i]][b[i]] = c[i];
+    g[b[i]][a[i]] = c[i];
   }
+  vector<int> order(n);
+  for (int i = 0; i < n; i++) order[i] = i;
 
-  int dp[n][n];
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++) {
-      if (i == j) {
-        dp[i][j] = 0;
-      } else {
-        dp[i][j] = inf;
-      }
+  ll ans = -1;
+  do {
+    ll sum = 0;
+    for (int i = 0; i < n - 1; i++) {
+      if (g[order[i]][order[i + 1]] == -1) break;
+      sum += g[order[i]][order[i + 1]];
     }
-  }
+    ans = max(ans, sum);
+  } while (next_permutation(order.begin(), order.end()));
 
-  for (int i = 0; i < m; i++) {
-    dp[a[i]][b[i]] = c[i];
-    dp[b[i]][a[i]] = c[i];
-  }
-
-  for (int k = 0; k < n; k++) {
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
-        dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j]);
-      }
-    }
-  }
-  int ans = -1;
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++) {
-      if (dp[i][j] == inf) continue;
-      ans = max(ans, dp[i][j]);
-    }
-  }
-
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++) {
-      if (dp[i][j] == inf) cout << "inf";
-      else cout <<dp[i][j];
-      cout << " ";
-    }
-    cout << "\n";
-  }
   cout << ans << endl;
   return 0;
 }
