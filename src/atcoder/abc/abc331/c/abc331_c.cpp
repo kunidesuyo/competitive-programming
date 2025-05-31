@@ -14,12 +14,11 @@ int main() {
   vector<ll> a(n);
   vector<ll> x(n);
 
-  ll sum = 0;
   for (ll i = 0; i < n; i++) {
     cin >> a[i];
-    sum += a[i];
     x[i] = a[i];
   }
+  ll sum = accumulate(all(a), 0);
   sort(all(a));
 
   vector<ll> b(n + 1);

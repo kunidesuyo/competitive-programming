@@ -111,6 +111,13 @@ vector<vector<int>> a(n);
     d.pop_back();   //末尾の要素を削除
 ```
 
+### accumulate
+配列の合計を求める
+```
+vector<int> a = {1, 2, 3, 4};
+int sum = accumulate(all(a), 0); // =1+2+3+4
+```
+
 ## 数学
 ### 直角三角形の斜辺
 ```
