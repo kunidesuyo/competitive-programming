@@ -18,7 +18,7 @@ int main() {
     cin >> a[i];
     x[i] = a[i];
   }
-  ll sum = accumulate(all(a), 0);
+  ll sum = accumulate(all(a), 0LL);
   sort(all(a));
 
   vector<ll> b(n + 1);

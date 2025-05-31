@@ -116,6 +116,9 @@ vector<vector<int>> a(n);
 ```
 vector<int> a = {1, 2, 3, 4};
 int sum = accumulate(all(a), 0); // =1+2+3+4
+
+vector<ll> a = {1, 2, 3, 4};
+ll sum = accumulate(all(a), 0LL); // =1+2+3+4
 ```
 
 ## 数学
