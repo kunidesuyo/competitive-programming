@@ -109,6 +109,7 @@ vector<vector<int>> a(n);
     d.push_back();  //末尾に挿入
     d.back();       //末尾の要素を参照
     d.pop_back();   //末尾の要素を削除
+    d[i]            //添字アクセス
 ```
 
 ### accumulate
